@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f8fdaef5e704c758ae8219d4fc66278" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="DBModel.Account" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Cohort" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Course" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Exam" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Result" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="DBModel.FK_Account_Cohort" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Course_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Result_AccountId" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Exam_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Result_ExamId" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.CohortCourse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
