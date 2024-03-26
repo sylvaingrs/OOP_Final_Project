@@ -28,6 +28,24 @@ namespace OOP_Final_Project.Controllers
                     ac.LoginErrorMessage = "Wrong Identification or Passeword";
                     return View("Index", ac);
                 }
+                else if(userDetail.AccountType == 0)
+                {
+                    Session["id"] = userDetail.Id;
+                    Session["email"] = userDetail.Email;
+                    Session["name"] = userDetail.FisrtName;
+                    Session["lastName"] = userDetail.LastName;
+                    Session["accountType"] = userDetail.AccountType;
+                    return RedirectToAction("Index", "Admin", userDetail);
+                }
+                else if (userDetail.AccountType == 1)
+                {
+                    Session["id"] = userDetail.Id;
+                    Session["email"] = userDetail.Email;
+                    Session["name"] = userDetail.FisrtName;
+                    Session["lastName"] = userDetail.LastName;
+                    Session["accountType"] = userDetail.AccountType;
+                    return RedirectToAction("Index", "Teacher", userDetail);
+                }
                 else
                 {
                     Session["id"] = userDetail.Id;

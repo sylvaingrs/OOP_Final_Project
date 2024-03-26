@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Index";
     Layout = null;
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <h2>Student</h2>
