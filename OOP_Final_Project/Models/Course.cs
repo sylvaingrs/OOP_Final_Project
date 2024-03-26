@@ -11,7 +11,8 @@ namespace OOP_Final_Project.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,7 @@ namespace OOP_Final_Project.Models
         }
     
         public int Id { get; set; }
+        [DisplayName("Course Name")]
         public string CourseName { get; set; }
         public int TeacherId { get; set; }
     
