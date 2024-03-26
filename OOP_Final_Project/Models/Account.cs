@@ -11,7 +11,9 @@ namespace OOP_Final_Project.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Account
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +24,13 @@ namespace OOP_Final_Project.Models
         }
     
         public int Id { get; set; }
+        [DisplayName("FirstName")]
+        [Required(ErrorMessage = "This Field is Required")]
         public string FisrtName { get; set; }
+        [Required(ErrorMessage = "This Field is Required")]
         public string LastName { get; set; }
         public string Email { get; set; }
+        [Required(ErrorMessage = "This Field is Required")]
         public string Password { get; set; }
         public short AccountType { get; set; }
         public Nullable<int> CohortId { get; set; }
@@ -34,5 +40,7 @@ namespace OOP_Final_Project.Models
         public virtual ICollection<Course> Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Result { get; set; }
+
+        public string LoginErrorMessage { get; set; }
     }
 }
