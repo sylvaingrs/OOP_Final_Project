@@ -68,9 +68,38 @@ namespace OOP_Final_Project.Controllers
             return View(cohort.Course.ToArray());
         }
 
-        public ActionResult Exams()
+        public ActionResult Exams(int? id)
         {
-            return View(db.Exam.ToList());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Account account = db.Account.FirstOrDefault(a => a.Id == id);
+
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+
+            Cohort cohort = db.Cohort.FirstOrDefault(x => x.Id == account.CohortId);
+
+            if (cohort == null)
+            {
+                return HttpNotFound();
+            }
+
+            List<Exam> exams = new List<Exam>();
+
+            foreach (Course course in cohort.Course.ToArray())
+            {
+                foreach (Exam exam in course.Exam.ToArray())
+                {
+                    exams.Add(exam);
+                }
+            }
+
+            return View(exams);
         }
     }
 }

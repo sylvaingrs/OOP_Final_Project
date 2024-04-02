@@ -14,7 +14,9 @@ namespace OOP_Final_Project.Models
 
     using System;
         using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Account
     {
 
@@ -30,19 +32,19 @@ namespace OOP_Final_Project.Models
 
 
         public int Id { get; set; }
-
+        [DisplayName("First Name")]
         public string FisrtName { get; set; }
-
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
 
         public string Email { get; set; }
 
         public string Password { get; set; }
-
+        [DisplayName("Account Type")]
         public short AccountType { get; set; }
-
+        [DisplayName("Cohort Id")]
         public Nullable<int> CohortId { get; set; }
-
+        [DisplayName("Login Error Message")]
         public string LoginErrorMessage { get; set; }
 
         public virtual Cohort Cohort { get; set; }
