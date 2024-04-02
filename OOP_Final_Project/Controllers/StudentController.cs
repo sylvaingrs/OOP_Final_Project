@@ -32,6 +32,8 @@ namespace OOP_Final_Project.Controllers
 
         public ActionResult Courses(int? id)
         {
+            //return View(db.Course.ToList());
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,15 +41,26 @@ namespace OOP_Final_Project.Controllers
 
             //Account account = db.Account.Find(id);
 
-            Account account = db.Account.Include(a => a.Course).FirstOrDefault(a => a.Id == id);
+            //foreach (var item in db.Course)
+            //{
+            //    item.Account = db.Account.Find(item.AccountId);
+            //}
+
+            //Account account = db.Account.Include(a => a.Course).FirstOrDefault(a => a.Id == id);
+
+            Account account = db.Account.FirstOrDefault(a => a.Id == id);
+
+            account.Course = db.Course.Where(x => x.Cohort == account.Cohort).ToList();
+
+            //Course course = db.Course.FirstOrDefault();
 
             if (account == null)
             {
                 return HttpNotFound();
             }
+            //return View(course);
 
-            return View(account.Course.ToList());
-            //return View(db.Course.ToList());
+            return View(account.Course);
         }
 
         public ActionResult Exams()

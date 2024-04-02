@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<OOP_Final_Project.Models.Course>
+@*@model OOP_Final_Project.Models.Course*@
 
 @{
     Layout = null;
@@ -20,21 +21,31 @@
         <th>
             @Html.DisplayNameFor(model => model.Account.FisrtName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherId)
+        </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account.FisrtName)
-        </td>
-    </tr>
-}
+    @if (!Model.Any())
+    {
+        <p>Aucun cours trouvé.</p>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.FisrtName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherId)
+                </td>
+            </tr>
+        }
+    }
 
 </table>
