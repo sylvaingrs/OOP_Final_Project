@@ -12,49 +12,48 @@
 namespace OOP_Final_Project.Models
 {
 
-using System;
-    using System.Collections.Generic;
+    using System;
+        using System.Collections.Generic;
     
-public partial class Account
-{
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Account()
+    public partial class Account
     {
 
-        this.Course = new HashSet<Course>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Account()
+        {
 
-        this.Result = new HashSet<Result>();
+            this.Course = new HashSet<Course>();
+
+            this.Result = new HashSet<Result>();
+
+        }
+
+
+        public int Id { get; set; }
+
+        public string FisrtName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public short AccountType { get; set; }
+
+        public Nullable<int> CohortId { get; set; }
+
+        public string LoginErrorMessage { get; set; }
+
+        public virtual Cohort Cohort { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Course> Course { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Result> Result { get; set; }
 
     }
-
-
-    public int Id { get; set; }
-
-    public string FisrtName { get; set; }
-
-    public string LastName { get; set; }
-
-    public string Email { get; set; }
-
-    public string Password { get; set; }
-
-    public short AccountType { get; set; }
-
-    public Nullable<int> CohortId { get; set; }
-
-    public string LoginErrorMessage { get; set; }
-
-    public virtual Cohort Cohort { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Course> Course { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Result> Result { get; set; }
-
-}
-
 }

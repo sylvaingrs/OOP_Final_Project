@@ -50,8 +50,6 @@ namespace OOP_Final_Project.Controllers
 
             Account account = db.Account.FirstOrDefault(a => a.Id == id);
 
-            account.Course = db.Course.Where(x => x.Cohort == account.Cohort).ToList();
-
             //Course course = db.Course.FirstOrDefault();
 
             if (account == null)
@@ -60,7 +58,14 @@ namespace OOP_Final_Project.Controllers
             }
             //return View(course);
 
-            return View(account.Course);
+            var cohort = db.Cohort.FirstOrDefault(x => x.Id == account.CohortId);
+
+            if (cohort == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(cohort.Course.ToArray());
         }
 
         public ActionResult Exams()

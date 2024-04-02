@@ -27,6 +27,12 @@ namespace OOP_Final_Project.Controllers
             return View(db.Cohort);
         }
 
+        // GET: Teacher/CohortPage/Students
+        public ActionResult Students()
+        {
+            return View();
+        }
+
         public ActionResult ExamPage()
         {
             return View(db.Exam);
@@ -114,6 +120,7 @@ namespace OOP_Final_Project.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
+            ViewBag.CourseId = new SelectList(db.Course, "Id", "CouseId", exam.CourseId);
             return View(exam);
         }
 

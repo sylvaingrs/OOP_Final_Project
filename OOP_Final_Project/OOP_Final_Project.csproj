@@ -170,6 +170,7 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Student\Courses.cshtml" />
     <Content Include="Views\Student\Exams.cshtml" />
+    <Content Include="Views\Teacher\Students.cshtml" />
     <Content Include="Views\Teacher\Create.cshtml" />
     <Content Include="Views\Teacher\Delete.cshtml" />
     <Content Include="Views\Teacher\Details.cshtml" />
