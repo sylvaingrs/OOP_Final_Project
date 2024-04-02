@@ -163,6 +163,11 @@ AutoTest.Net/
 # Web workbench (sass)
 .sass-cache/
 
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
 # Installshield output folder
 [Ee]xpress/
 
