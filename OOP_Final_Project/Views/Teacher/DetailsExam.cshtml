@@ -1,0 +1,43 @@
+﻿@model OOP_Final_Project.Models.Exam
+
+@{
+    ViewBag.Title = "DetailsExam";
+    Layout = null;
+}
+
+<h2>DetailsExam</h2>
+
+<div>
+    <h4>Exam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coefficient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coefficient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("EditExam", "EditExam", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ExamPage")
+</p>

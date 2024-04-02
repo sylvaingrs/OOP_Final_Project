@@ -27,6 +27,11 @@ namespace OOP_Final_Project.Controllers
             return View(db.Cohort);
         }
 
+        public ActionResult ExamPage()
+        {
+            return View(db.Exam);
+        }
+
         // GET: Teacher/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,6 +45,20 @@ namespace OOP_Final_Project.Controllers
                 return HttpNotFound();
             }
             return View(account);
+        }
+
+        public ActionResult DetailsExam(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Exam exam = db.Exam.Find(id);
+            if (exam == null)
+            {
+                return HttpNotFound();
+            }
+            return View(exam);
         }
 
         // GET: Teacher/Create
@@ -60,7 +79,7 @@ namespace OOP_Final_Project.Controllers
             {
                 db.Exam.Add(exam);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ExamPage");
             }
 
             ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
@@ -83,6 +102,21 @@ namespace OOP_Final_Project.Controllers
             return View(account);
         }
 
+        public ActionResult EditExam(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Exam exam = db.Exam.Find(id);
+            if (exam == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Id = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
+            return View(exam);
+        }
+
         // POST: Teacher/Edit/5
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -100,6 +134,20 @@ namespace OOP_Final_Project.Controllers
             return View(account);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditExam([Bind(Include = "Id,Date,CourseId,Coefficient")]Exam exam)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(exam).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ExamPage");
+            }
+            ViewBag.Id = new SelectList(db.Cohort, "Id", "ExamName", exam.Id);
+            return View(exam);
+        }
+
         // GET: Teacher/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -115,6 +163,20 @@ namespace OOP_Final_Project.Controllers
             return View(account);
         }
 
+        public ActionResult DeleteExam(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Exam exam = db.Exam.Find(id);
+            if (exam == null)
+            {
+                return HttpNotFound();
+            }
+            return View(exam);
+        }
+
         // POST: Teacher/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -124,6 +186,17 @@ namespace OOP_Final_Project.Controllers
             db.Account.Remove(account);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // POST: Teacher/Delete/5
+        [HttpPost, ActionName("DeleteExam")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteExamConfirmed(int id)
+        {
+            Exam exam = db.Exam.Find(id);
+            db.Exam.Remove(exam);
+            db.SaveChanges();
+            return RedirectToAction("ExamPage");
         }
 
         protected override void Dispose(bool disposing)
