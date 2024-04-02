@@ -39,7 +39,7 @@ namespace OOP_Final_Project.Controllers
         // GET: Teacher/Create
         public ActionResult Create()
         {
-            ViewBag.CohortId = new SelectList(db.Cohort, "Id", "CohortName");
+            ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName");
             return View();
         }
 
@@ -48,17 +48,17 @@ namespace OOP_Final_Project.Controllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FisrtName,LastName,Email,Password,AccountType,CohortId")] Account account)
+        public ActionResult Create([Bind(Include = "Id,Date,CourseId,Coefficient")] Exam exam)
         {
             if (ModelState.IsValid)
             {
-                db.Account.Add(account);
+                db.Exam.Add(exam);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CohortId = new SelectList(db.Cohort, "Id", "CohortName", account.CohortId);
-            return View(account);
+            ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
+            return View(exam);
         }
 
         // GET: Teacher/Edit/5
