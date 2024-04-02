@@ -21,6 +21,12 @@ namespace OOP_Final_Project.Controllers
             return View(account.ToList());
         }
 
+        // GET: Teacher/CohortPage
+        public ActionResult CohortPage()
+        {
+            return View(db.Cohort);
+        }
+
         // GET: Teacher/Details/5
         public ActionResult Details(int? id)
         {
