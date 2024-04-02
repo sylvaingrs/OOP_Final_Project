@@ -180,6 +180,8 @@
     <Content Include="Views\Teacher\DetailsExam.cshtml" />
     <Content Include="Views\Teacher\EditExam.cshtml" />
     <Content Include="Views\Teacher\DeleteExam.cshtml" />
+    <Content Include="Views\Admin\ExamPage.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

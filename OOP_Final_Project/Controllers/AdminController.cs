@@ -17,6 +17,11 @@ namespace OOP_Final_Project.Controllers
             return View(db.Account.ToList());
         }
 
+        public ActionResult ExamPage()
+        {
+            return View(db.Exam);
+        }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -29,6 +34,30 @@ namespace OOP_Final_Project.Controllers
             {
                 return HttpNotFound();
             }
+            return View(account);
+        }
+
+        public ActionResult Create()
+        {
+            ViewBag.Account = new SelectList(db.Exam, "Id", "AccountName");
+            return View();
+        }
+
+        // POST: Teacher/Create
+        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,FisrtName,LastName,Email,Password,AccountType,CohortId")] Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Account.Add(account);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CohortId = new SelectList(db.Account, "Id", "AccountName", account.Id);
             return View(account);
         }
     }
