@@ -10,10 +10,19 @@ namespace OOP_Final_Project.Controllers
 {
     public class LoginController : Controller
     {
+        public bool cond = false;
         // GET: Login
         public ActionResult Index()
         {
-            return View();
+            if (Session["id"] == null && cond == true)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                cond = true;
+                return View();
+            }
         }
 
         [HttpPost]
@@ -35,7 +44,7 @@ namespace OOP_Final_Project.Controllers
                     Session["name"] = userDetail.FisrtName;
                     Session["lastName"] = userDetail.LastName;
                     Session["accountType"] = userDetail.AccountType;
-                    return RedirectToAction("Index", "Admin", userDetail);
+                    return RedirectToAction("Index", "Admin");
                 }
                 else if (userDetail.AccountType == 1)
                 {
@@ -44,7 +53,7 @@ namespace OOP_Final_Project.Controllers
                     Session["name"] = userDetail.FisrtName;
                     Session["lastName"] = userDetail.LastName;
                     Session["accountType"] = userDetail.AccountType;
-                    return RedirectToAction("Index", "Teacher", userDetail);
+                    return RedirectToAction("Index", "Teacher");
                 }
                 else
                 {
@@ -53,7 +62,7 @@ namespace OOP_Final_Project.Controllers
                     Session["name"] = userDetail.FisrtName;
                     Session["lastName"] = userDetail.LastName;
                     Session["accountType"] = userDetail.AccountType;
-                    return RedirectToAction("Index", "Student", userDetail);
+                    return RedirectToAction("Index", "Student");
                 }
             }
 
@@ -61,7 +70,8 @@ namespace OOP_Final_Project.Controllers
 
         public ActionResult LogOut()
         {
-            int userId = (int)Session["userID"];
+            //int userId = (int)Session["userID"];
+            Session["userID"] = null;
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }

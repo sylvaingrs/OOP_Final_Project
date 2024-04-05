@@ -9,34 +9,73 @@
     }
 }
 
-<h2>Exams</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css"/>
+    <style>
+        table {
+            padding: 30px 0 30px 0;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Coefficient)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Course.CourseName)
-        </th>
-        <th></th>
-    </tr>
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Coefficient)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.CourseName)
-        </td>
-    </tr>
-}
+        th, td {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Exams</h2>
+    <h4>Student account</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Coefficient)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </th>
+            </tr>
+        </thead>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td colspan="3" class="line" style=" padding: 0px;"></td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Coefficient)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+
+    <a href="@Url.Action("Index", "Student")" id="button">Back to Student Details</a>
+</body>
+</html>
