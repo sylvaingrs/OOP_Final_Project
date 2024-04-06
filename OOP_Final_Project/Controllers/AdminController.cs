@@ -57,7 +57,7 @@ namespace OOP_Final_Project.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CohortId = new SelectList(db.Account, "Id", "AccountName", account.Id);
+            ViewBag.CohortId = new SelectList(db.Cohort, "CohortId", "CohortId", account.CohortId);
             return View(account);
         }
     }

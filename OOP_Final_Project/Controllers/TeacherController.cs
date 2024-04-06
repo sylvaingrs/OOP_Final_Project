@@ -54,9 +54,32 @@ namespace OOP_Final_Project.Controllers
             return View(students);
         }
 
-        public ActionResult ExamPage()
+        public ActionResult ExamPage(int? id)
         {
-            return View(db.Exam);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var cohort = db.Cohort.Find(id);
+            
+
+            List<Exam> exams = new List<Exam>();
+
+            foreach (Course course in cohort.Course.ToArray())
+            {
+                foreach (Exam exam in course.Exam.ToArray())
+                {
+                    exams.Add(exam);
+                }
+            }
+
+            ViewBag.Er = exams;
+            return View(exams);
+
+
+            
+
         }
 
         // GET: Teacher/Details/5
@@ -143,7 +166,7 @@ namespace OOP_Final_Project.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
-            ViewBag.CourseId = new SelectList(db.Course, "Id", "CouseId", exam.CourseId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseId", exam.CourseId);
             return View(exam);
         }
 

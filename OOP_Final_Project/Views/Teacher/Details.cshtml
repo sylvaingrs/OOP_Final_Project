@@ -10,54 +10,90 @@
     ViewBag.Title = "Student Account";
 }
 
-<h2>@ViewBag.Title</h2>
+<!DOCTYPE html>
 
-<p>
-    @Html.ActionLink("Back to Menu", "Index")
-</p>
-<p>
-    @Html.ActionLink("Back to Cohort", "CohortPage", new { id = ViewBag.CohortId })
-</p>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css" />
+    <style>
+        .d-container {
+            display: flex;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
 
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.FisrtName)
-    </dt>
+        dl {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width: 330px;
+            border: 1px solid black;
+        }
 
-    <dd>
-        @Html.DisplayFor(model => model.FisrtName)
-    </dd>
+        dt {
+            width: 100px;
+            margin-right: 30px;
+        }
 
-    <dt>
-        @Html.DisplayNameFor(model => model.LastName)
-    </dt>
+        dd {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
 
-    <dd>
-        @Html.DisplayFor(model => model.LastName)
-    </dd>
+    <h2>@ViewBag.Title</h2>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.Email)
-    </dt>
+    <p>
+        @Html.ActionLink("Back to Menu", "Index")
+    </p>
+    <p>
+        @Html.ActionLink("Back to Cohort", "CohortPage", new { id = ViewBag.CohortId })
+    </p>
 
-    <dd>
-        @Html.DisplayFor(model => model.Email)
-    </dd>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FisrtName)
+        </dt>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.AccountType)
-    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FisrtName)
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.AccountType)
-    </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.Cohort.CohortName)
-    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.Cohort.CohortName)
-    </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
 
-</dl>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cohort.CohortName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cohort.CohortName)
+        </dd>
+
+    </dl>
+</body>
+</html>

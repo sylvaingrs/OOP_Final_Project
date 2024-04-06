@@ -98,7 +98,7 @@ namespace OOP_Final_Project.Controllers
                     exams.Add(exam);
                 }
             }
-
+            ViewBag.Exams = exams;
             return View(exams);
         }
     }
