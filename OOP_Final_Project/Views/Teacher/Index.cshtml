@@ -2,14 +2,15 @@
 
 @{
     Layout = null;
-    ViewBag.Title = "Index";
     if (Session["id"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
+
+    ViewBag.Title = "Home Page";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Exam List", "ExamPage")
@@ -40,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.Account.Count)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    @Html.ActionLink("Details", "CohortPage", new { id = item.Id })
                 </td>
             </tr>
         }

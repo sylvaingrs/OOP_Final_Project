@@ -46,8 +46,11 @@ namespace OOP_Final_Project.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var students = db.Account.Where(account => account.CohortId == id).ToList();
+            var cohort = db.Cohort.Find(id);
 
+            var students = db.Account.Where(account => account.CohortId == cohort.Id).ToList();
+
+            ViewBag.Title = cohort.CohortName;
             return View(students);
         }
 
@@ -68,6 +71,8 @@ namespace OOP_Final_Project.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.CohortId = account.CohortId;
             return View(account);
         }
 
