@@ -38,6 +38,13 @@ namespace OOP_Final_Project.Controllers
             return View(cohorts);
         }
 
+        public ActionResult AddGrade()
+        {
+            var account = db.Account.ToList();
+            ViewBag.AccountList = new SelectList(db.Account, "Id", "AccountId");
+            return View();
+        }
+
         // GET: Teacher/CohortPage
         public ActionResult CohortPage(int? id)
         {

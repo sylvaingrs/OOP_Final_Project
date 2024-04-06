@@ -37,7 +37,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 600px;
+            width: 800px;
             border: 1px solid black;
         }
 
@@ -89,13 +89,16 @@
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
                     <td>
-                        @Html.ActionLink("EditExam", "EditExam", new { id = item.Id })
+                        @Html.ActionLink("Edit Exam", "EditExam", new { id = item.Id })
                     </td>
                     <td>
-                        @Html.ActionLink("DetailsExam", "DetailsExam", new { id = item.Id })
+                        @Html.ActionLink("Details Exam", "DetailsExam", new { id = item.Id })
                     </td>
                     <td>
-                        @Html.ActionLink("DeleteExam", "DeleteExam", new { id = item.Id })
+                        @Html.ActionLink("Delete Exam", "DeleteExam", new { id = item.Id })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add Grade", "AddGrade", new { id = item.Id })
                     </td>
                 </tr>
             }
