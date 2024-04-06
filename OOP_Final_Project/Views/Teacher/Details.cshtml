@@ -63,48 +63,47 @@
     <p>
         @Html.ActionLink("Back to Cohort", "CohortPage", new { id = ViewBag.CohortId })
     </p>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FisrtName)
+        </dt>
 
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.FisrtName)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FisrtName)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.FisrtName)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.AccountType)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.AccountType)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cohort.CohortName)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Cohort.CohortName)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cohort.CohortName)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Cohort.CohortName)
-            </dd>
-
-        </dl>
+    </dl>
 </body>
 </html>
