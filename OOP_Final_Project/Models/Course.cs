@@ -14,6 +14,8 @@ namespace OOP_Final_Project.Models
 
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
     public partial class Course
     {
@@ -28,11 +30,10 @@ namespace OOP_Final_Project.Models
 
         }
 
-
         public int Id { get; set; }
-
+        [DisplayName("Course Name")]
         public string CourseName { get; set; }
-
+        [DisplayName("Teacher Id")]
         public int TeacherId { get; set; }
 
 

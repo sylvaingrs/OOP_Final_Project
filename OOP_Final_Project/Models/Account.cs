@@ -16,9 +16,16 @@ namespace OOP_Final_Project.Models
         using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Account
     {
+        public enum EAccountType
+        {
+            Admin = 0,
+            Teacher = 1,
+            Student = 2
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
@@ -42,6 +49,26 @@ namespace OOP_Final_Project.Models
         public string Password { get; set; }
         [DisplayName("Account Type")]
         public short AccountType { get; set; }
+        [NotMapped]
+        [DisplayName("Account Type")]
+        public string AccountTypeString
+        {
+            get
+            {
+                switch (AccountType)
+                {
+                    case (short)EAccountType.Admin:
+                        return "Admin";
+                    case (short)EAccountType.Teacher:
+                        return "Teacher";
+                    case (short)EAccountType.Student:
+                        return "Student";
+                    default:
+                        return "Unknown";
+                }
+            }
+        }
+
         [DisplayName("Cohort Id")]
         public Nullable<int> CohortId { get; set; }
         [DisplayName("Login Error Message")]

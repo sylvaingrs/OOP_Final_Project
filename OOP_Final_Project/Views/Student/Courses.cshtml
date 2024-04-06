@@ -53,6 +53,9 @@
                     @Html.DisplayNameFor(model => model.Account.FisrtName)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Account.LastName)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.TeacherId)
                 </th>
             </tr>
@@ -78,6 +81,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Account.FisrtName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Account.LastName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TeacherId)
