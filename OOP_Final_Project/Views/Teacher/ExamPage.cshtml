@@ -19,7 +19,7 @@
             text-decoration: none;
             background-color: #C6EBC5;
             color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
+            padding: 7px;
             border-radius: 10px;
             border: 1px solid gray;
             margin-left: 8px;
@@ -37,8 +37,12 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 800px;
+            width: 950px;
             border: 1px solid black;
+        }
+
+        table {
+            text-align: center
         }
 
         dt {
@@ -48,6 +52,12 @@
 
         dd {
             margin-left: 30px;
+        }
+        tr {
+            align-items: center;
+        }
+        th, td {
+            padding: 8px;
         }
     </style>
 </head>
@@ -78,6 +88,9 @@
 
             @foreach (var item in Model)
             {
+                <tr>
+                    <td colspan="7" class="line" style=" padding: 0px;"></td>
+                </tr>
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Date)

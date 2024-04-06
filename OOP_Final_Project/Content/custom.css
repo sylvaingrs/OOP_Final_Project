@@ -6,21 +6,6 @@ body {
     font-size: 17px;
 }
 
-input {
-    background-color: #F1EEDC;
-    border: 1px solid black;
-    border-radius: 3px;
-}
-
-input:hover {
-    background-color: white;
-}
-
-:root {
-    --background: #B3C8CF;
-    --gray-700: #4a5568;
-}
-
 hr {
     background-color: white;
 }
@@ -44,6 +29,11 @@ a {
     margin-right: 8px;
 }
 
-    a:hover {
-        background-color: #a5eba3;
-    }
+a:hover {
+    background-color: #a5eba3;
+}
+
+:root {
+    --background: #B3C8CF;
+    --gray-700: #4a5568;
+}

@@ -16,16 +16,7 @@
 <head>
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
+
 
         .d-container {
             display: flex;
@@ -56,64 +47,71 @@
 <body>
 
     <h2>@ViewBag.Title</h2>
-
-    <p>
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FisrtName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FisrtName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cohort.CohortName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cohort.CohortName)
-        </dd>
+    <h4>Admin account</h4>
+    <hr />
+    <dl>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.FisrtName)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.FisrtName)
+            </dd>
+        </div>
+        <div class="line"></div>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+        </div>
+        <div class="line"></div>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </div>
+        <div class="line"></div>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+        </div>
+        <div class="line"></div>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.AccountTypeString)
+            </dd>
+        </div>
+        <div class="line"></div>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cohort.CohortName)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.Cohort.CohortName)
+            </dd>
+        </div>
 
     </dl>
-
-    <p>
-        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
-    </p>
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
 </body>
 </html>

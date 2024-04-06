@@ -11,15 +11,25 @@
 <head>
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
+
+        table {
+            padding: 30px 0 30px 0;
+            background-color: #E5DDC5;
+            padding: 20px;
             border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
+            border: 1px solid black;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+        }
+
+        th, td {
+            padding: 8px;
         }
 
         .d-container {
@@ -50,9 +60,11 @@
 </head>
 <body>
 
-    <h2>ExamPage</h2>
-    <dl>
-        <table class="table">
+    <h2>Exam List</h2>
+    <h4>Admin account</h4>
+    <hr />
+    <table class="table">
+        <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Date)
@@ -63,11 +75,18 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Course.CourseName)
                 </th>
-                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
             </tr>
+        </thead>
 
-            @foreach (var item in Model)
-            {
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4" class="line" style=" padding: 0px;"></td>
+                </tr>
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Date)
@@ -78,14 +97,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Result)
+                    </td>
                 </tr>
-            }
+            </tbody>
+        }
 
-        </table>
-        </dl>
-            <p>
+    </table>
+    <p>
 
-                @Html.ActionLink("Back to Menu", "Index")
-            </p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </body>
 </html>
