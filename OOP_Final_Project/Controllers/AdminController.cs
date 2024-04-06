@@ -14,6 +14,9 @@ namespace OOP_Final_Project.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            var cohorts = db.Cohort.ToList();
+
+            ViewBag.CohortList = cohorts;
             return View(db.Account.ToList());
         }
 

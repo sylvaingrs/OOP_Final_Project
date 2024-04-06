@@ -7,6 +7,8 @@
     {
         Response.Redirect("~/Login/Index");
     }
+
+    List<OOP_Final_Project.Models.Cohort> cohorts = ViewBag.CohortList;
 }
 <!DOCTYPE html>
 
@@ -84,7 +86,7 @@
                         @Html.DisplayNameFor(model => model.AccountType)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CohortId)
+                        @Html.DisplayName("Cohort Name")
                     </th>
                     <th></th>
                 </tr>
@@ -125,7 +127,17 @@
 
                         <td>
                             <hr />
-                            @Html.DisplayFor(modelItem => item.CohortId)
+                            @{
+                                var cohort = cohorts.FirstOrDefault(c => c.Id == item.CohortId);
+                                if (cohort != null)
+                                {
+                                    @cohort.CohortName
+                                }
+                                else
+                                {
+                                    @:NULL
+                                }
+                            }
                         </td>
 
                         <td>
