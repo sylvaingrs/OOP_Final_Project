@@ -110,6 +110,7 @@ namespace OOP_Final_Project.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(exam);
         }
 
@@ -165,8 +166,11 @@ namespace OOP_Final_Project.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
-            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseId", exam.CourseId);
+
+            var courses = db.Course.ToList();
+
+            ViewBag.CourseList = new SelectList(courses, "Id", "CourseName");
+
             return View(exam);
         }
 
@@ -189,15 +193,25 @@ namespace OOP_Final_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditExam([Bind(Include = "Id,Date,CourseId,Coefficient")]Exam exam)
+        public ActionResult EditExam([Bind(Include = "Id,Date,CourseId,Coefficient")]Exam exam, int? courseId)
         {
+            if (courseId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             if (ModelState.IsValid)
             {
+                exam.CourseId = (int)courseId;
+
                 db.Entry(exam).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ExamPage");
+                return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Cohort, "Id", "ExamName", exam.Id);
+
+            var courses = db.Course.ToList();
+
+            ViewBag.CourseList = new SelectList(courses, "Id", "CourseName");
             return View(exam);
         }
 

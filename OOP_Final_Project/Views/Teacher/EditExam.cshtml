@@ -48,7 +48,6 @@
     </style>
 </head>
 <body>
-
     <h2>EditExam</h2>
 
     <dl>
@@ -71,9 +70,9 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CourseId, "Course Name", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownList("CourseId", (SelectList)ViewBag.CourseId, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("CourseId", ViewBag.CourseList as SelectList, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -93,14 +92,14 @@
                 </div>
             </div>
         }
-        </dl>
+    </dl>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-            <script src="~/Scripts/jquery.validate.min.js"></script>
-            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
