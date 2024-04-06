@@ -64,5 +64,29 @@ namespace OOP_Final_Project.Controllers
             ViewBag.CohortId = new SelectList(db.Cohort, "CohortId", "CohortId", account.CohortId);
             return View(account);
         }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = db.Account.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Account account = db.Account.Find(id);
+            db.Account.Remove(account);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
