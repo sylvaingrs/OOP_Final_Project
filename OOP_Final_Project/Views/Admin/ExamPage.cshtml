@@ -5,42 +5,90 @@
     Layout = null;
 }
 
-<h2>ExamPage</h2>
+<!DOCTYPE html>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Coefficient)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Course.CourseName)
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css" />
+    <style>
+        a {
+            text-decoration: none;
+            background-color: #C6EBC5;
+            color: var(--gray-700);
+            padding: 1px 7px 1px 7px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Coefficient)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Course.CourseName)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) 
-            </td>
-        </tr>
-    }
+        .d-container {
+            display: flex;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
 
-</table>
-<p>
+        dl {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width: 330px;
+            border: 1px solid black;
+        }
 
-    @Html.ActionLink("Back to Menu", "Index")
-</p>
+        dt {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        dd {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ExamPage</h2>
+    <dl>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Coefficient)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Coefficient)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </dl>
+            <p>
+
+                @Html.ActionLink("Back to Menu", "Index")
+            </p>
+</body>
+</html>
