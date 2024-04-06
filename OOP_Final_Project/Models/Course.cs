@@ -12,41 +12,41 @@
 namespace OOP_Final_Project.Models
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Course
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Course()
+    public partial class Course
     {
 
-        this.Exam = new HashSet<Exam>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Course()
+        {
 
-        this.Cohort = new HashSet<Cohort>();
+            this.Exam = new HashSet<Exam>();
+
+            this.Cohort = new HashSet<Cohort>();
+
+        }
+
+
+        public int Id { get; set; }
+
+        public string CourseName { get; set; }
+
+        public int TeacherId { get; set; }
+
+
+
+        public virtual Account Account { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Exam> Exam { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Cohort> Cohort { get; set; }
 
     }
-
-
-    public int Id { get; set; }
-
-    public string CourseName { get; set; }
-
-    public int TeacherId { get; set; }
-
-
-
-    public virtual Account Account { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Exam> Exam { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Cohort> Cohort { get; set; }
-
-}
 
 }

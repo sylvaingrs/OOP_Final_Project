@@ -17,20 +17,38 @@ namespace OOP_Final_Project.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            var account = db.Account.Include(a => a.Cohort);
-            return View(account.ToList());
+            if (Session["id"] == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            int Id = (int)Session["id"];
+
+            Account account = db.Account.Find(Id);
+
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+
+            var cohorts = db.Cohort
+                .Where(cohort => cohort.Course.Any(course => course.TeacherId == account.Id))
+                .ToList();
+
+            return View(cohorts);
         }
 
         // GET: Teacher/CohortPage
-        public ActionResult CohortPage()
+        public ActionResult CohortPage(int? id)
         {
-            return View(db.Cohort);
-        }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        // GET: Teacher/CohortPage/Students
-        public ActionResult Students()
-        {
-            return View();
+            var students = db.Account.Where(account => account.CohortId == id).ToList();
+
+            return View(students);
         }
 
         public ActionResult ExamPage()

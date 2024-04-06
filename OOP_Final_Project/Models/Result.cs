@@ -12,26 +12,26 @@
 namespace OOP_Final_Project.Models
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Result
-{
 
-    public int Id { get; set; }
+    public partial class Result
+    {
 
-    public int AccountId { get; set; }
+        public int Id { get; set; }
 
-    public int ExamId { get; set; }
+        public int AccountId { get; set; }
 
-    public double Grade { get; set; }
+        public int ExamId { get; set; }
+
+        public double Grade { get; set; }
 
 
 
-    public virtual Account Account { get; set; }
+        public virtual Account Account { get; set; }
 
-    public virtual Exam Exam { get; set; }
+        public virtual Exam Exam { get; set; }
 
-}
+    }
 
 }
