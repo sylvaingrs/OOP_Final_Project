@@ -76,10 +76,6 @@ namespace OOP_Final_Project.Controllers
 
             ViewBag.Er = exams;
             return View(exams);
-
-
-            
-
         }
 
         // GET: Teacher/Details/5

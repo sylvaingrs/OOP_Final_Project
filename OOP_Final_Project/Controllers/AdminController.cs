@@ -39,6 +39,8 @@ namespace OOP_Final_Project.Controllers
 
         public ActionResult Create()
         {
+            var cohorts = db.Cohort.ToList();
+            ViewBag.CohortList = new SelectList(cohorts, "Id", "CohortName");
             ViewBag.Account = new SelectList(db.Exam, "Id", "AccountName");
             return View();
         }
@@ -48,10 +50,12 @@ namespace OOP_Final_Project.Controllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FisrtName,LastName,Email,Password,AccountType,CohortId")] Account account)
+        public ActionResult Create([Bind(Include = "Id,FisrtName,LastName,Email,Password,AccountType,CohortId")] Account account, int? cohortId)
         {
             if (ModelState.IsValid)
             {
+                account.CohortId = cohortId;
+
                 db.Account.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
