@@ -1,4 +1,4 @@
-﻿@model OOP_Final_Project.Models.Account
+﻿﻿@model OOP_Final_Project.Models.Account
 
 @{
     ViewBag.Title = "Delete";
@@ -11,16 +11,7 @@
 <head>
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
+
 
         .d-container {
             display: flex;
@@ -34,7 +25,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 330px;
+            width: 400px;
             border: 1px solid black;
         }
 
@@ -58,53 +49,76 @@
         <h4>Account</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.FisrtName)
-            </dt>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FisrtName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.FisrtName)
+                </dd>
+            </div>
+            <hr />
 
-            <dd>
-                @Html.DisplayFor(model => model.FisrtName)
-            </dd>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+            </div>
+            <hr />
 
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </div>
+            <hr />
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+            </div>
+            <hr />
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.AccountType)
+                </dd>
+            </div>
+            <hr />
 
-            <dt>
-                @Html.DisplayNameFor(model => model.AccountType)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.AccountType)
-            </dd>
+            <div class="d-container">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Cohort.CohortName)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cohort.CohortName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Cohort.CohortName)
+                </dd>
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Cohort.CohortName)
-            </dd>
 
         </dl>
 
@@ -113,10 +127,10 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
+                <input type="submit" value="Delete" class="inp" />
                 @Html.ActionLink("Back to List", "Index")
             </div>
         }
     </div>
-    </body>
+</body>
 </html>
