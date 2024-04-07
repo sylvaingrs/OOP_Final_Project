@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Contexts;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using OOP_Final_Project.Class;
@@ -79,10 +82,12 @@ namespace OOP_Final_Project.Controllers
             return View(exams);
         }
 
-        public ActionResult AddGrade()
+        public ActionResult AddGrade(int? id)
         {
+            var exam = db.Exam.Find(id);
             List<Account> students = db.Account.Where(c => c.AccountType == (short)Account.EAccountType.Student).ToList();
             ViewBag.AccountList = new SelectList(students, "Id", "FisrtName");
+            ViewBag.Exam = exam.Course.CourseName;
             return View();
         }
 
@@ -92,14 +97,18 @@ namespace OOP_Final_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Result.Add(result);
+                db.Entry(result).State = EntityState.Modified;
+                db.Result.Attach(result);
                 db.SaveChanges();
-                return RedirectToAction("ExamPage");
-            }
+                return RedirectToAction("Index");
 
-            ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName", result.Id);
+            }
+            ViewBag.Result = new SelectList(db.Result, "Id", "ResultId", result);
             return View(result);
         }
+
+
+
 
         // GET: Teacher/Details/5
         public ActionResult Details(int? id)
