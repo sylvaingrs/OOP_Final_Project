@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using OOP_Final_Project.Class;
 using OOP_Final_Project.Models;
 
 namespace OOP_Final_Project.Controllers
@@ -40,7 +41,6 @@ namespace OOP_Final_Project.Controllers
 
         public ActionResult AddGrade()
         {
-            var account = db.Account.ToList();
             ViewBag.AccountList = new SelectList(db.Account, "Id", "AccountId");
             return View();
         }
@@ -98,7 +98,10 @@ namespace OOP_Final_Project.Controllers
                 return HttpNotFound();
             }
 
+            Dictionary<Course, double> grades = ResultCalulation.CalculateAveragePerCourse(account.Cohort, account.Id);
+
             ViewBag.CohortId = account.CohortId;
+            ViewBag.Grades = grades;
             return View(account);
         }
 

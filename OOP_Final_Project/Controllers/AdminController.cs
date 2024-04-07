@@ -1,4 +1,5 @@
-﻿using OOP_Final_Project.Models;
+﻿using OOP_Final_Project.Class;
+using OOP_Final_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace OOP_Final_Project.Controllers
             {
                 return HttpNotFound();
             }
+
+            Dictionary<Course, double> grades = ResultCalulation.CalculateAveragePerCourse(account.Cohort, account.Id);
+
+            ViewBag.CohortId = account.CohortId;
+            ViewBag.Grades = grades;
             return View(account);
         }
 

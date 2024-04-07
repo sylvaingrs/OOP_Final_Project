@@ -7,43 +7,37 @@ using System.Runtime.InteropServices;
 
 namespace OOP_Final_Project.Class
 {
-    public class ResultCalulation
+    public static class ResultCalulation
     {
-        private DBModels db = new DBModels();
+        private static DBModels db = new DBModels();
 
-        public Dictionary<string, double> CalculateAveragePerCourse(Cohort cohort, int studentId)
+        public static Dictionary<Course, double> CalculateAveragePerCourse(Cohort cohort, int studentId)
         {
-            Dictionary<string, double> courseAverages = new Dictionary<string, double>();
+            Dictionary<Course, double> courseAverages = new Dictionary<Course, double>();
 
-            List<Course> courses = db.Course.Where(course => course.Cohort.Any(c => c.Id == cohort.Id)).ToList();
+            var courses = db.Course.Where(course => course.Cohort.Any(c => c.Id == cohort.Id));
 
-            foreach (Course course in courses)
+            foreach (var course in courses)
             {
-                List<Exam> exams = db.Exam.Where(e => e.CourseId == course.Id).ToList();
+                var exams = db.Exam.Where(e => e.CourseId == course.Id);
 
-                if (exams.Any())
+                double sum = 0;
+                double coef = 0;
+
+                foreach (var exam in exams)
                 {
-                    double sum = 0;
-                    double coef = 0;
+                    var results = exam.Result.Where(r => r.AccountId == studentId);
 
-                    foreach (Exam exam in exams)
+                    foreach (var result in results)
                     {
-                        var results = exam.Result.Where(r => r.AccountId == studentId);
-
-                        foreach(Result result in results)
-                        {
-                            sum += result.Grade * exam.Coefficient;
-                            coef += exam.Coefficient;
-                        }
+                        sum += result.Grade * exam.Coefficient;
+                        coef += exam.Coefficient;
                     }
+                }
 
-                    double average = sum / coef;
-                    courseAverages.Add(course.CourseName, average);
-                }
-                else
-                {
-                    courseAverages.Add(course.CourseName, 0);
-                }
+                double average = coef == 0 ? 0 : sum / coef;
+
+                courseAverages.Add(course, average);
             }
 
             return courseAverages;

@@ -51,6 +51,25 @@
         dd {
             margin-left: 30px;
         }
+
+        table {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width: 330px;
+            border: 1px solid black;
+        }
+
+        tr {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        td {
+            margin-left: 30px;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +118,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AccountType)
+            @Html.DisplayFor(model => model.AccountTypeString)
         </dd>
 
         <dt>
@@ -111,6 +130,16 @@
         </dd>
 
     </dl>
+
+    <table class="td-horizontal">
+        @foreach (KeyValuePair<OOP_Final_Project.Models.Course, double> grade in ViewBag.Grades)
+        {
+            <tr>
+                <td>@grade.Key.CourseName</td>
+                <td>@grade.Value</td>
+            </tr>
+        }
+    </table>
 
     <p>
         @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
