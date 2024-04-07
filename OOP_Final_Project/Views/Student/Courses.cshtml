@@ -1,0 +1,97 @@
+﻿@model IEnumerable<OOP_Final_Project.Models.Course>
+@*@model OOP_Final_Project.Models.Course*@
+
+@{
+    Layout = null;
+    ViewBag.Title = "Courses";
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css"/>
+    <style>
+        table {
+            padding: 30px 0 30px 0;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        tbody {
+            display: table-row-group; 
+            vertical-align: middle; 
+        }
+
+        th, td {
+            padding: 8px; 
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <h2>Courses</h2>
+    <h4>Student account</h4>
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account.FisrtName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account.LastName)
+                </th>
+            </tr>
+
+        </thead>
+
+        @if (!Model.Any())
+        {
+            <p>Aucun cours trouvé.</p>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+
+                <tbody>
+                    <tr>
+                        <td colspan="4" class="line" style=" padding: 0px;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Account.FisrtName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Account.LastName)
+                        </td>
+                    </tr>
+                </tbody>
+
+            }
+        }
+
+    </table>
+
+    <a href="@Url.Action("Index", "Student")" id="button">Back to Student Details</a>
+</body>
+</html>
+
+

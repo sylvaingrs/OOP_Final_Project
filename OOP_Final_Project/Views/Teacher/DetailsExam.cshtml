@@ -1,0 +1,91 @@
+﻿@model OOP_Final_Project.Models.Exam
+
+@{
+    ViewBag.Title = "DetailsExam";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css" />
+    <style>
+        .d-container {
+            display: flex;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        dl {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width: 330px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        dt {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        dd {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Details Exam</h2>
+    <h4>Teacher Account</h4>
+    <hr />
+    <div>
+        <dl class="dl-horizontal">
+
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+            </div>
+            <hr />
+
+
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Coefficient)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Coefficient)
+                </dd>
+            </div>
+            <hr />
+
+
+            <div class="d-container">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Course.CourseName)
+                </dd>
+            </div>
+
+
+        </dl>
+</div>
+    @Html.ActionLink("Edit", "EditExam", new { id = Model.Id })
+    @Html.ActionLink("Back to List", "Index")
+
+</body>
+</html>

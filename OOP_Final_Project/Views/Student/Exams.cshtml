@@ -1,0 +1,95 @@
+﻿@model IEnumerable<OOP_Final_Project.Models.Exam>
+
+@{
+    ViewBag.Title = "Exams";
+    Layout = null;
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css"/>
+    <style>
+        table {
+            padding: 30px 0 30px 0;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Exams</h2>
+    <h4>Student account</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Coefficient)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4" class="line" style=" padding: 0px;"></td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Coefficient)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+                    <td>
+                        @foreach (KeyValuePair<OOP_Final_Project.Models.Course, double> grade in ViewBag.Grades)
+                        {
+                           if(grade.Key.CourseName == item.Course.CourseName)
+                            {
+                                @grade.Value @: %
+                            }
+                        }
+                    </td>
+                </tr>
+                    </tbody>
+        }
+
+        
+
+    </table>
+
+    <a href="@Url.Action("Index", "Student")" id="button">Back to Student Details</a>
+</body>
+</html>

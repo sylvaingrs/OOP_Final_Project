@@ -1,0 +1,122 @@
+﻿@model OOP_Final_Project.Models.Account
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css" />
+    <style>
+        .d-container {
+            display: flex;
+            margin-bottom: 15px;
+            margin-top: 15px;
+
+        }
+
+        dl {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width:  350px;
+            border: 1px solid black;
+        }
+
+        dt {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        dd {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Details</h2>
+    <h4>Student Account</h4>
+    <hr />
+    <div class="container">
+        <dl>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FisrtName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.FisrtName)
+                </dd>
+            </div>
+            <div class="line"></div>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+            </div>
+            <div class="line"></div>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </div>
+            <div class="line"></div>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+            </div>
+            <div class="line"></div>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.AccountTypeString)
+                </dd>
+            </div>
+            <div class="line"></div>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cohort.CohortName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Cohort.CohortName)
+                </dd>
+            </div>
+
+        </dl>
+    </div>
+
+    @Html.ActionLink("Courses", "Courses", new { id = Model.Id })
+    @Html.ActionLink("Exams", "Exams", new { id = Model.Id })
+
+
+    @Html.ActionLink("Logout", "../Login")
+</body>
+</html>
+
+
+

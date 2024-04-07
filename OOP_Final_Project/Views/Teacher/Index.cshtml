@@ -1,0 +1,122 @@
+﻿﻿@model IEnumerable<OOP_Final_Project.Models.Cohort>
+
+@{
+    Layout = null;
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/custom.css" />
+    <style>
+        .d-container {
+            display: flex;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        dl {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width: 700px;
+            border: 1px solid black;
+        }
+
+        dt {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        dd {
+            margin-left: 30px;
+        }
+
+
+        table {
+            padding: 30px 0 30px 0;
+            background-color: #E5DDC5;
+            padding: 20px;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        a {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>@ViewBag.Title</h2>
+    <h4>Teacher Account</h4>
+    <hr>
+    <dl>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CohortName)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Number Of Student")
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            @if (!Model.Any())
+            {
+                @Html.DisplayName("No Cohort")
+            }
+            else
+            {
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td colspan="4" class="line" style=" padding: 0px;"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CohortName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.Count)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Cohort Page", "CohortPage", new { id = item.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Exam List", "ExamPage", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            }
+        </table>
+    </dl>
+    @Html.ActionLink("Logout", "../Login")
+</body>
+</html>

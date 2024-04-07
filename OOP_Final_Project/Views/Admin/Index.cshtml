@@ -1,0 +1,150 @@
+﻿@model IEnumerable<OOP_Final_Project.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+
+    List<OOP_Final_Project.Models.Cohort> cohorts = ViewBag.CohortList;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/custom.css" />
+    <style>
+
+        .d-container {
+            display: flex;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        dl {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #E5DDC5;
+            padding: 20px;
+            border-radius: 10px;
+            width:750px;
+            border: 1px solid black;
+        }
+
+        dt {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        dd {
+            margin-left: 30px;
+        }
+
+        a {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Student list</h2>
+    <h4>Admin Account</h4>
+    <hr />
+
+    <dl>
+        <table id="table" class="table" style="margin-bottom: 30px;">
+            <thead class="thead-dark">
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FisrtName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountType)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Cohort Name")
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <hr />
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        
+                        <td>
+                            <hr />
+                            @Html.DisplayFor(modelItem => item.FisrtName)
+                        </td>
+
+                        <td>
+                            <hr />
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+
+                        <td>
+                            <hr />
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                        <td>
+                            <hr />
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+
+                        <td>
+                            <hr />
+                            @Html.DisplayFor(modelItem => item.AccountTypeString)
+                        </td>
+
+                        <td>
+                            <hr />
+                            @{
+                                var cohort = cohorts.FirstOrDefault(c => c.Id == item.CohortId);
+                                if (cohort != null)
+                                {
+                                    @cohort.CohortName
+                                }
+                                else
+                                {
+                                    @:NULL
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <hr />
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </dl>
+
+    @Html.ActionLink("Exam List", "ExamPage")
+    @Html.ActionLink("Create", "Create")
+    @Html.ActionLink("Logout", "../Login")
+</body>
+</html>
