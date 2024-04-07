@@ -74,11 +74,19 @@
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Result)
+                        @foreach (KeyValuePair<OOP_Final_Project.Models.Course, double> grade in ViewBag.Grades)
+                        {
+                           if(grade.Key.CourseName == item.Course.CourseName)
+                            {
+                                @grade.Value @: %
+                            }
+                        }
                     </td>
                 </tr>
-            </tbody>
+                    </tbody>
         }
+
+        
 
     </table>
 

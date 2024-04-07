@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using OOP_Final_Project.Class;
 
 namespace OOP_Final_Project.Controllers
 {
@@ -98,6 +99,11 @@ namespace OOP_Final_Project.Controllers
                     exams.Add(exam);
                 }
             }
+
+
+            Dictionary<Course, double> grades = ResultCalulation.CalculateAveragePerCourse(account.Cohort, account.Id);
+
+            ViewBag.Grades = grades;
             ViewBag.Exams = exams;
             return View(exams);
         }
