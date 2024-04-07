@@ -39,12 +39,6 @@ namespace OOP_Final_Project.Controllers
             return View(cohorts);
         }
 
-        public ActionResult AddGrade()
-        {
-            ViewBag.AccountList = new SelectList(db.Account, "Id", "AccountId");
-            return View();
-        }
-
         // GET: Teacher/CohortPage
         public ActionResult CohortPage(int? id)
         {
@@ -83,6 +77,28 @@ namespace OOP_Final_Project.Controllers
 
             ViewBag.Er = exams;
             return View(exams);
+        }
+
+        public ActionResult AddGrade()
+        {
+            List<Account> students = db.Account.Where(c => c.AccountType == (short)Account.EAccountType.Student).ToList();
+            ViewBag.AccountList = new SelectList(students, "Id", "FisrtName");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddGrade([Bind(Include = "Id,AccountId,ExamId,Grade")] Result result)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Result.Add(result);
+                db.SaveChanges();
+                return RedirectToAction("ExamPage");
+            }
+
+            ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName", result.Id);
+            return View(result);
         }
 
         // GET: Teacher/Details/5
