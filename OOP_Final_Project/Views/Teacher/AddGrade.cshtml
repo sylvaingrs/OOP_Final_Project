@@ -15,16 +15,6 @@
 <head>
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
 
         .d-container {
             display: flex;
@@ -38,7 +28,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 300px;
+            width: 400px;
             border: 1px solid black;
         }
 
@@ -50,21 +40,33 @@
         dd {
             margin-left: 30px;
         }
+
+        .form-group {
+            display: flex;
+        }
+
+        label {
+            width: 110px;
+            margin-right: 20px;
+        }
+
+        select:hover {
+            background-color: white;
+        }
     </style>
 </head>
 <body>
 
 
-    <h2>AddGrade</h2>
-
+    <h2>Add Grade</h2>
+    <h4>Teacher Account</h4>
+    <hr />
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
       
 <div class="form-horizontal">
-    <h4>Result</h4>
-    <hr />
     <dl>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -74,7 +76,7 @@
                 @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <hr />
         <div class="form-group">
             @Html.LabelFor(model => model.AccountId, "Exam Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -83,7 +85,7 @@
                 @Html.ValidationMessageFor(model => model.ExamId, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <hr />
         <div class="form-group">
             @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -91,10 +93,10 @@
                 @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <hr />  
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="inp" />
             </div>
         </div>
     </dl>
