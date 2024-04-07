@@ -17,16 +17,6 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
 
         .d-container {
             display: flex;
@@ -40,7 +30,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width:725px;
+            width:750px;
             border: 1px solid black;
         }
 
@@ -52,16 +42,19 @@
         dd {
             margin-left: 30px;
         }
+
+        a {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
     </style>
 </head>
 
 <body>
     <h2>Student list</h2>
+    <h4>Admin Account</h4>
     <hr />
-    <p>
-        @Html.ActionLink("Exam List", "ExamPage")
-        @Html.ActionLink("Create", "Create")
-    </p>
+
     <dl>
         <table id="table" class="table" style="margin-bottom: 30px;">
             <thead class="thead-dark">
@@ -99,7 +92,7 @@
                             <hr />
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
-
+                        
                         <td>
                             <hr />
                             @Html.DisplayFor(modelItem => item.FisrtName)
@@ -141,14 +134,17 @@
                         </td>
 
                         <td>
+                            <hr />
                             @Html.ActionLink("Details", "Details", new { id = item.Id })
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-        </dl>
+    </dl>
 
-            @Html.ActionLink("Logout", "../Login")
+    @Html.ActionLink("Exam List", "ExamPage")
+    @Html.ActionLink("Create", "Create")
+    @Html.ActionLink("Logout", "../Login")
 </body>
 </html>

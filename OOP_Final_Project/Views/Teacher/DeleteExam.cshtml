@@ -12,16 +12,6 @@
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
 
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
         .d-container {
             display: flex;
             margin-bottom: 15px;
@@ -51,47 +41,59 @@
 <body>
 
     <h2>DeleteExam</h2>
-
+    <h4>Teacher Account</h4>
+    <hr />
     <h3>Are you sure you want to delete this?</h3>
     <div>
-        <h4>Exam</h4>
-        <hr />
-            <dl class="dl-horizontal">
+        <dl class="dl-horizontal">
+
+            <div class="d-container">
                 <dt>
                     @Html.DisplayNameFor(model => model.Date)
                 </dt>
-
+                |
                 <dd>
                     @Html.DisplayFor(model => model.Date)
                 </dd>
+            </div>
+            <hr />
 
+
+            <div class="d-container">
                 <dt>
                     @Html.DisplayNameFor(model => model.Coefficient)
                 </dt>
-
+                |
                 <dd>
                     @Html.DisplayFor(model => model.Coefficient)
                 </dd>
+            </div>
+            <hr />
+
+
+            <div class="d-container">
 
                 <dt>
                     @Html.DisplayNameFor(model => model.Course.CourseName)
                 </dt>
-
+                |
                 <dd>
                     @Html.DisplayFor(model => model.Course.CourseName)
                 </dd>
+            </div>
 
-            </dl>
 
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
+        </dl>
 
-                    <div class="form-actions no-color">
-                        <input type="submit" value="Delete" class="btn btn-default" /> |
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
-                }
-</div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="inp" />
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
 </body>
 </html>

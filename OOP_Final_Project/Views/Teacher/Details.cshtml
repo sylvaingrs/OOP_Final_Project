@@ -1,4 +1,4 @@
-﻿@model OOP_Final_Project.Models.Account
+﻿﻿@model OOP_Final_Project.Models.Account
 
 @{
     Layout = null;
@@ -22,16 +22,7 @@
             margin-top: 15px;
         }
 
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
+
 
         dl {
             margin-top: 40px;
@@ -39,7 +30,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 330px;
+            width: 380px;
             border: 1px solid black;
         }
 
@@ -51,87 +42,81 @@
         dd {
             margin-left: 30px;
         }
-
-        table {
-            margin-top: 40px;
-            margin-bottom: 40px;
-            background-color: #E5DDC5;
-            padding: 20px;
-            border-radius: 10px;
-            width: 330px;
-            border: 1px solid black;
-        }
-
-        tr {
-            width: 100px;
-            margin-right: 30px;
-        }
-
-        td {
-            margin-left: 30px;
-        }
     </style>
 </head>
 <body>
 
     <h2>@ViewBag.Title</h2>
+    <h4>Teacher Account</h4>
+    <hr />
 
-    <p>
-        @Html.ActionLink("Back to Menu", "Index")
-    </p>
-    <p>
-        @Html.ActionLink("Back to Cohort", "CohortPage", new { id = ViewBag.CohortId })
-    </p>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FisrtName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FisrtName)
-        </dd>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.FisrtName)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.FisrtName)
+            </dd>
+        </div>
+        <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+        </div>
+        <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </div>
+        <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cohort.CohortName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cohort.CohortName)
-        </dd>
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.AccountType)
+            </dd>
+        </div>
+        <hr />
+
+
+
+        <div class="d-container">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cohort.CohortName)
+            </dt>
+            |
+            <dd>
+                @Html.DisplayFor(model => model.Cohort.CohortName)
+            </dd>
+        </div>
+
+
 
     </dl>
-    <table class="td-horizontal">
-        @foreach (KeyValuePair<OOP_Final_Project.Models.Course, double> grade in ViewBag.Grades)
-        {
-            <tr>
-                <td>@grade.Key.CourseName</td>
-                <td>@grade.Value</td>
-            </tr>
-        }
-    </table>
+    @Html.ActionLink("Back to Menu", "Index")
+    @Html.ActionLink("Back to Cohort", "CohortPage", new { id = ViewBag.CohortId })
 </body>
 </html>

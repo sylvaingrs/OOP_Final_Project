@@ -25,6 +25,7 @@
             border-radius: 10px;
             width: 330px;
             border: 1px solid black;
+            text-align: center;
         }
 
         dt {
@@ -35,57 +36,56 @@
         dd {
             margin-left: 30px;
         }
-
-        a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
     </style>
 </head>
 <body>
 
-    <h2>DetailsExam</h2>
-
+    <h2>Details Exam</h2>
+    <h4>Teacher Account</h4>
+    <hr />
     <div>
-        <h4>Exam</h4>
-        <hr />
-            <dl class="dl-horizontal">
+        <dl class="dl-horizontal">
+
+            <div class="d-container">
                 <dt>
                     @Html.DisplayNameFor(model => model.Date)
                 </dt>
-
+                |
                 <dd>
                     @Html.DisplayFor(model => model.Date)
                 </dd>
+            </div>
+            <hr />
 
+
+            <div class="d-container">
                 <dt>
                     @Html.DisplayNameFor(model => model.Coefficient)
                 </dt>
-
+                |
                 <dd>
                     @Html.DisplayFor(model => model.Coefficient)
                 </dd>
+            </div>
+            <hr />
+
+
+            <div class="d-container">
 
                 <dt>
                     @Html.DisplayNameFor(model => model.Course.CourseName)
                 </dt>
-
+                |
                 <dd>
                     @Html.DisplayFor(model => model.Course.CourseName)
                 </dd>
+            </div>
 
-            </dl>
+
+        </dl>
 </div>
-    <p>
-        @Html.ActionLink("Edit", "EditExam", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditExam", new { id = Model.Id })
+    @Html.ActionLink("Back to List", "Index")
 
-    </p>
 </body>
 </html>

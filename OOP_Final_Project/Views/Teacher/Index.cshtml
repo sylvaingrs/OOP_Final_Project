@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OOP_Final_Project.Models.Cohort>
+﻿﻿@model IEnumerable<OOP_Final_Project.Models.Cohort>
 
 @{
     Layout = null;
@@ -28,7 +28,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 450px;
+            width: 700px;
             border: 1px solid black;
         }
 
@@ -42,59 +42,81 @@
         }
 
 
+        table {
+            padding: 30px 0 30px 0;
+            background-color: #E5DDC5;
+            padding: 20px;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
         a {
-            text-decoration: none;
-            background-color: #C6EBC5;
-            color: var(--gray-700);
-            padding: 1px 7px 1px 7px;
-            border-radius: 10px;
-            border: 1px solid gray;
-            margin-left: 8px;
-            margin-right: 8px;
+            padding-top: 7px;
+            padding-bottom: 7px;
         }
     </style>
 </head>
 <body>
 
     <h2>@ViewBag.Title</h2>
-
+    <h4>Teacher Account</h4>
+    <hr>
     <dl>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CohortName)
-                </th>
-                <th>
-                    @Html.DisplayName("Number Of Student")
-                </th>
-                <th></th>
-            </tr>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CohortName)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Number Of Student")
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
             @if (!Model.Any())
             {
                 @Html.DisplayName("No Cohort")
             }
             else
             {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CohortName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Account.Count)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Details", "CohortPage", new { id = item.Id })
-                        </td>
-                        <td>
-                            @Html.ActionLink("Exam List", "ExamPage", new { id = item.Id })
-                        </td>
-                    </tr>
-                }
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td colspan="4" class="line" style=" padding: 0px;"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CohortName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.Count)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Cohort Page", "CohortPage", new { id = item.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Exam List", "ExamPage", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
             }
         </table>
-        </dl>
-            @Html.ActionLink("Logout", "../Login")
+    </dl>
+    @Html.ActionLink("Logout", "../Login")
 </body>
 </html>
