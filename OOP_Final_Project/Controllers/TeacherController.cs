@@ -158,6 +158,10 @@ namespace OOP_Final_Project.Controllers
         // GET: Teacher/Create
         public ActionResult Create()
         {
+            var courses = db.Course.ToList();
+
+            ViewBag.CourseList = new SelectList(courses, "Id", "CourseName");
+
             ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName");
             return View();
         }
@@ -176,6 +180,9 @@ namespace OOP_Final_Project.Controllers
                 return RedirectToAction("ExamPage");
             }
 
+            var courses = db.Course.ToList();
+
+            ViewBag.CourseList = new SelectList(courses, "Id", "CourseName");
             ViewBag.CohortId = new SelectList(db.Exam, "Id", "ExamName", exam.Id);
             return View(exam);
         }
