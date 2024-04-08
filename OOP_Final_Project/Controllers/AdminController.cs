@@ -1,4 +1,5 @@
-﻿using OOP_Final_Project.Class;
+﻿//Roxane Seibel 74527 - Jon Gouspy 74538 - Sylvain Gross 74525 - Leith Chakroun 74529
+using OOP_Final_Project.Class;
 using OOP_Final_Project.Models;
 using System;
 using System.Collections.Generic;
