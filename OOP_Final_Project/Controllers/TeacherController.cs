@@ -96,8 +96,28 @@ namespace OOP_Final_Project.Controllers
                 return HttpNotFound();
             }
 
+            Course course = db.Course.Find(exam.CourseId);
+
+            List<Cohort> cohorts = new List<Cohort>();
+
+            foreach (Cohort cohort in course.Cohort)
+            {
+                cohorts.Add(db.Cohort.FirstOrDefault(c => c.Id == cohort.Id));
+            }
+
             List<Account> students = db.Account.Where(c => c.AccountType == (short)Account.EAccountType.Student).ToList();
-            ViewBag.AccountList = new SelectList(students, "Id", "FisrtName");
+
+            List<Account> cohortStudents = new List<Account>();
+
+            foreach (Account student in students)
+            {
+                if (cohorts.Any(c => c.Id == student.CohortId))
+                {
+                    cohortStudents.Add(student);
+                }
+            }
+
+            ViewBag.AccountList = new SelectList(cohortStudents, "Id", "FisrtName");
 
             Result result = new Result();
             result.ExamId = exam.Id;
