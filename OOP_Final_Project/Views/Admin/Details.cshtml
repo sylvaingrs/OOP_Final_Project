@@ -17,6 +17,15 @@
 <head>
     <link rel="stylesheet" href="~/Content/custom.css" />
     <style>
+        .row {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .column {
+            padding: 0px 20px 0px 20px;
+        }
 
         .d-container {
             display: flex;
@@ -30,7 +39,7 @@
             background-color: #E5DDC5;
             padding: 20px;
             border-radius: 10px;
-            width: 400px;
+            width: 380px;
             border: 1px solid black;
         }
 
@@ -49,82 +58,97 @@
     <h2>@ViewBag.Title</h2>
     <h4>Admin Account</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <section class="row">
+        <dl class="dl-horizontal column">
 
 
-        <div class="d-container">
-            <dt>
-                @Html.DisplayNameFor(model => model.FisrtName)
-            </dt>
-            |
-            <dd>
-                @Html.DisplayFor(model => model.FisrtName)
-            </dd>
-        </div>
-        <hr />
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FisrtName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.FisrtName)
+                </dd>
+            </div>
+            <hr />
 
-        <div class="d-container">
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-            |
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-        </div>
-        <hr />
-
-
-        <div class="d-container">
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            |
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-        </div>
-        <hr />
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+            </div>
+            <hr />
 
 
-        <div class="d-container">
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
-            |
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
-        </div>
-        <hr />
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </div>
+            <hr />
 
 
-        <div class="d-container">
-            <dt>
-                @Html.DisplayNameFor(model => model.AccountType)
-            </dt>
-            |
-            <dd>
-                @Html.DisplayFor(model => model.AccountType)
-            </dd>
-        </div>
-        <hr />
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+            </div>
+            <hr />
 
 
-        <div class="d-container">
-            <dt>
-                @Html.DisplayNameFor(model => model.Cohort.CohortName)
-            </dt>
-            |
-            <dd>
-                @Html.DisplayFor(model => model.Cohort.CohortName)
-            </dd>
-        </div>
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.AccountType)
+                </dd>
+            </div>
+            <hr />
 
 
+            <div class="d-container">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cohort.CohortName)
+                </dt>
+                |
+                <dd>
+                    @Html.DisplayFor(model => model.Cohort.CohortName)
+                </dd>
+            </div>
+        </dl>
 
-    </dl>
+        <dl class="dl-horizontal column">
 
+            @foreach (KeyValuePair<OOP_Final_Project.Models.Course, double> grade in ViewBag.Grades)
+            {
+                <div class="d-container">
+                    <dt>
+                        @grade.Key.CourseName
+                    </dt>
+                    |
+                    <dd>
+                        @grade.Value %
+                    </dd>
+                </div>
+            }
+
+        </dl>
+    </section>
 
     @Html.ActionLink("Back to List", "Index")
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id })

@@ -85,11 +85,24 @@ namespace OOP_Final_Project.Controllers
 
         public ActionResult AddGrade(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var exam = db.Exam.Find(id);
+
+            if (exam == null)
+            {
+                return HttpNotFound();
+            }
+
             List<Account> students = db.Account.Where(c => c.AccountType == (short)Account.EAccountType.Student).ToList();
             ViewBag.AccountList = new SelectList(students, "Id", "FisrtName");
-            ViewBag.Exam = exam.Course.CourseName;
-            return View();
+
+            Result result = new Result();
+            result.ExamId = exam.Id;
+
+            return View(result);
         }
 
         [HttpPost]
@@ -99,17 +112,13 @@ namespace OOP_Final_Project.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(result).State = EntityState.Modified;
-                db.Result.Attach(result);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-
             }
+
             ViewBag.Result = new SelectList(db.Result, "Id", "ResultId", result);
             return View(result);
         }
-
-
-
 
         // GET: Teacher/Details/5
         public ActionResult Details(int? id)
