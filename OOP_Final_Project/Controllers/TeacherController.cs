@@ -131,7 +131,16 @@ namespace OOP_Final_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(result).State = EntityState.Modified;
+                if (db.Result.Any(r => r.Id == result.Id))
+                {
+                    db.Entry(result).State = EntityState.Modified;
+                }
+                else
+                {
+                    result.Exam = db.Exam.FirstOrDefault(e => e.Id == result.ExamId);
+                    result.Account = db.Account.FirstOrDefault(a => a.Id == result.AccountId);
+                    db.Result.Add(result);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
